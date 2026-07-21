@@ -2,6 +2,7 @@
 * xref:index.adoc[Welcome]
 * xref:01-overview.adoc[Workshop Overview]
 * xref:02-details.adoc[Workshop Details]
+* xref:intel-hardware.adoc[Intel Hardware]
 
 .Core Modules
 * xref:03-module-01-agentic-app.adoc[Module 1: The Agentic App]

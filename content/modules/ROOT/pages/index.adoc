@@ -1,5 +1,7 @@
 = AgentOps Observability with Red Hat AI on Intel Gaudi
 
+image::intel-logo.png[Intel,width=200,align=center]
+
 _Powered by Intel Gaudi 3 AI Accelerators and Red Hat OpenShift AI_
 
 Welcome to the AgentOps Observability with Red Hat AI workshop — powered by Intel Gaudi 3 AI accelerators!
