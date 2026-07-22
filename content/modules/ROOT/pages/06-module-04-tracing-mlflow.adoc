@@ -139,7 +139,7 @@ NOTE: If you don't see a tool call (e.g., `ceo_pipeline_summary`) in the span se
 +
 image::nav-execution-timeline.png[MLflow Details and Timeline view showing the full execution tree from LangGraph through input shield agent ChatOpenAI tool calls and output shield,link=self,window=blank,width=700]
 +
-The trace tree shows the complete execution path: `LangGraph` → `input_shield` → `agent` → `ChatOpenAI` (1.26s, decides to call a tool) → `tool_auth` → `ceo_pipeline_summary` (17ms, fetches pipeline data) → `agent` → `ChatOpenAI` (6.44s, composes the response) → `output_shield`. Now you can answer every question from Module 1's observability challenge.
+The trace tree shows the complete execution path: `LangGraph` → `input_shield` → `after_input_shield` → `agent` → `ChatOpenAI` (decides to call a tool) → `should_continue` → `tool_auth` → `after_tool_auth` → `tools` → `ceo_pipeline_summary` (fetches pipeline data) → `agent` → `ChatOpenAI` (composes the response) → `should_continue` → `output_shield`. Now you can answer every question from Module 1's observability challenge.
 +
 [%collapsible]
 .Full span breakdown (click to expand)
@@ -154,6 +154,9 @@ The trace tree shows the complete execution path: `LangGraph` → `input_shield`
 |`input_shield`
 |Safety filter: checks the input for harmful content
 
+|`after_input_shield`
+|Post-shield hook: records shield result and passes to next stage
+
 |`agent` (first)
 |LangGraph agent node: routes to the LLM
 
@@ -161,10 +164,13 @@ The trace tree shows the complete execution path: `LangGraph` → `input_shield`
 |LLM call: decides to call the `ceo_pipeline_summary` tool
 
 |`should_continue`
-|Decision point: should the agent keep processing?
+|Decision point: should the agent keep processing or return?
 
 |`tool_auth`
 |Authorization check: does the CEO role have access to this tool?
+
+|`after_tool_auth`
+|Post-auth hook: records authorization result before tool execution
 
 |`tools` → `ceo_pipeline_summary`
 |Tool execution: queries the database for pipeline data
