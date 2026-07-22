@@ -79,9 +79,11 @@ In Module 1, you clicked **Explore Products** and chatted with the Prospect Agen
 
 . Click **Traces** in the left sidebar. You'll see a list of all traced requests, sorted by most recent:
 +
-image::mlflow2.png[MLflow Traces list showing captured requests including Explore Products and portfolio health queries,link=self,window=blank,width=700]
+image::mlflow2.png[MLflow Traces list showing captured requests from Module 1 interactions,link=self,window=blank,width=700]
 +
-Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Notice the trace at the bottom, _"What mortgage products do you offer? I'd like..."_, this is the Explore Products conversation from Module 1.
+Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Your traces list will show only the conversations you had in Module 1. Look for the trace at the bottom: _"What mortgage products do you offer? I'd like to compare my options."_ — this is the Explore Products conversation.
++
+NOTE: The screenshot above shows a sample environment. Your own traces list will contain only your Module 1 interactions: the Explore Products chat and your CEO conversations.
 
 . Click on that trace to open its **Summary** view:
 +
@@ -97,7 +99,7 @@ The Summary tab reveals what was invisible in Module 1:
 
 == Exercise 3: Analyze the CEO trace end-to-end
 
-Remember Module 1, Exercise 3? You signed in as CEO David Park, asked _"What is my portfolio health?"_, and got a detailed response. We pointed out the observability gap: you had no way of knowing which agents processed your question, which tools were invoked, or how long each step took.
+Remember Module 1, Exercise 3? You signed in as CEO David Park, asked _"Show me the current pipeline status"_, and got a detailed response. We pointed out the observability gap: you had no way of knowing which agents processed your question, which tools were invoked, or how long each step took.
 
 Now let's close that gap.
 
