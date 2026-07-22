@@ -1,6 +1,10 @@
-= AgentOps Observability with Red Hat AI
+= AgentOps Observability with Red Hat AI on Intel Gaudi
 
-Welcome to the AgentOps Observability with Red Hat AI workshop!
+image::intel-logo.png[Intel,width=200,align=center]
+
+_Powered by Intel Gaudi 3 AI Accelerators and Red Hat OpenShift AI_
+
+Welcome to the AgentOps Observability with Red Hat AI workshop — powered by Intel Gaudi 3 AI accelerators!
 
 == What you'll learn
 
@@ -18,6 +22,15 @@ This workshop is designed for SREs, Platform Engineers, and AI Developers/Engine
 == Prerequisites
 
 This workshop assumes basic familiarity with Kubernetes and AI/ML concepts.
+
+== Infrastructure
+
+This lab runs on Intel Gaudi 3 AI accelerators, demonstrating that production-grade multi-agent AI workloads run efficiently on Intel's AI hardware platform.
+
+* *Model:* qwen3-14b (14B parameter dense model)
+* *Serving:* vLLM optimized for Intel Gaudi
+* *Hardware:* Intel Gaudi 3 accelerators on Red Hat OpenShift AI
+* *Performance:* Sub-second tool calls, validated for 150+ concurrent lab users
 
 == Workshop environment
 

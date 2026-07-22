@@ -39,3 +39,9 @@ Your CTO has called an emergency meeting: "Our AI agents are failing in producti
 **The opportunity**: Red Hat OpenShift AI provides an integrated observability stack that can address these challenges. You've been selected to evaluate and implement it for Fed Aura Capital's use case.
 
 **Technical perspective**: "MLflow tracing combined with RHOAI's metrics stack can give us the visibility we need, but we need to validate how it integrates with our LangGraph agents and MCP tools."
+
+== Hardware: Intel Gaudi 3
+
+The AI inference powering this lab runs on Intel Gaudi 3 accelerators — Intel's purpose-built AI hardware platform. The multi-agent system uses qwen3-14b served by vLLM optimized for Intel Gaudi, delivering sub-second tool calling at scale across all five agent personas.
+
+This demonstrates that production-grade agentic AI workloads run efficiently on Intel's AI infrastructure, with Red Hat OpenShift AI providing the enterprise platform layer for deployment, observability, and lifecycle management.
