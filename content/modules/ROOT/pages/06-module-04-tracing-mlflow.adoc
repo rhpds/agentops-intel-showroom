@@ -87,15 +87,17 @@ NOTE: The screenshot above shows a sample environment. Your own traces list will
 
 . Click on that trace to open its **Summary** view:
 +
-image::mlflow3.png[MLflow trace summary showing inputs with user identity and the span sequence of ChatOpenAI and tool calls,link=self,window=blank,width=700]
+image::mlflow3.png[MLflow trace summary for the Explore Products conversation showing user_id input and a single ChatOpenAI span,link=self,window=blank,width=700]
 +
 The Summary tab reveals what was invisible in Module 1:
 +
 --
-* **Inputs**: The user context passed to the agent
-* **Span sequence**: The operations that executed (`ChatOpenAI was called`, tool invocations, and follow-up LLM calls)
-* **Outputs**: The complete response returned to the user, including metadata
+* **Inputs**: The user context — notice that `user_email` and `user_name` are empty. The Prospect Agent serves unauthenticated visitors, so only a session `user_id` is captured.
+* **Span sequence**: A single `ChatOpenAI was called` span — the Prospect Agent answered this question directly from its training, with no tool invocations needed.
+* **Outputs**: The complete response returned to the user, including the same user context fields.
 --
++
+NOTE: Compare this to the CEO trace in Exercise 3, which shows multiple spans including tool calls and identity tracking for an authenticated user. The depth of a trace reflects the complexity of the agent interaction.
 
 == Exercise 3: Analyze the CEO trace end-to-end
 
