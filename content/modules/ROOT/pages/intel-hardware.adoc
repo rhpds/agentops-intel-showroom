@@ -1,22 +1,22 @@
-= Intel Gaudi 3 hardware architecture
+= Intel hardware architecture
 :navtitle: Intel Hardware
 
-== Powered by Intel Gaudi 3
+== Powered by Intel
 
-This workshop runs on **Intel Gaudi 3 AI accelerators** via the Red Hat Demo Platform. All LLM inference is served on Intel's purpose-built AI hardware.
+This workshop runs on **Intel** hardware via the Red Hat Demo Platform. All LLM inference is served on Intel's AI-optimized infrastructure.
 
 [cols="1,2",options="header"]
 |===
 |Component |Intel Hardware
 
 |**LLM Inference**
-|qwen3-14b on Intel Gaudi 3 (rac-maas, 8 cards / 2 replicas)
+|qwen3-14b on Intel infrastructure (rac-maas, 8 cards / 2 replicas)
 
 |**Model Serving**
-|vLLM optimized for Intel Gaudi, with Habana Processing Unit (HPU) graph compilation and expert parallelism
+|vLLM optimized for Intel, with hardware-accelerated graph compilation and expert parallelism
 
 |**Infrastructure**
-|Red Hat OpenShift AI on Intel Gaudi 3 nodes
+|Red Hat OpenShift AI on Intel compute nodes
 |===
 
 == Model-to-hardware mapping
@@ -26,15 +26,15 @@ This workshop runs on **Intel Gaudi 3 AI accelerators** via the Red Hat Demo Pla
 |Model |Hardware |Performance
 
 |qwen3-14b
-|Intel Gaudi 3 (4 cards per replica × 2 replicas)
+|Intel (4 cards per replica x 2 replicas)
 |27-35 tok/s, 1.1s avg latency, 91% tool accuracy
 
 |===
 
-== Why Intel Gaudi for AI inference?
+== Why Intel for AI inference?
 
-* **Purpose-built for AI**: Intel Gaudi 3 is designed from the ground up for deep learning training and inference workloads
-* **High throughput**: 128 GB HBM2e per card with 3.7 TB/s bandwidth delivers consistent performance under load
+* **Purpose-built for AI**: Intel's AI hardware is designed for deep learning training and inference workloads
+* **High throughput**: High-bandwidth memory delivers consistent performance under load
 * **Scalable**: Tensor parallelism and expert parallelism across multiple cards
 * **Production validated**: This lab has been load-tested at 150 concurrent users with 0 errors and sub-second tool calling
 * **Enterprise-ready**: Integrated with Red Hat OpenShift AI for deployment, observability, and lifecycle management

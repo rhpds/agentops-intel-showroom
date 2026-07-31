@@ -210,7 +210,7 @@ This is where the agent got its numbers. If the CEO's response ever contains inc
 image::mlflow8.png[MLflow span detail for ChatOpenAI showing model qwen3-14b with system prompt and completion,link=self,width=700]
 +
 --
-* **Model**: `qwen3-14b`, the exact model serving this request (on Intel Gaudi 3)
+* **Model**: `qwen3-14b`, the exact model serving this request (on Intel)
 * **Inputs → messages**: The system prompt (_"You are the Fed Aura Capital executive assistant"_) and the conversation context including the tool result
 * **Outputs → choices**: The complete LLM response before any post-processing
 --

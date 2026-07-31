@@ -40,8 +40,8 @@ Your CTO has called an emergency meeting: "Our AI agents are failing in producti
 
 **Technical perspective**: "MLflow tracing combined with RHOAI's metrics stack can give us the visibility we need, but we need to validate how it integrates with our LangGraph agents and MCP tools."
 
-== Hardware: Intel Gaudi 3
+== Hardware: Powered by Intel
 
-The AI inference powering this lab runs on Intel Gaudi 3 accelerators, Intel's purpose-built AI hardware platform. The multi-agent system uses qwen3-14b served by vLLM optimized for Intel Gaudi, delivering sub-second tool calling at scale across all 5 agent personas.
+The AI inference powering this lab runs on Intel hardware, Intel's purpose-built AI platform. The multi-agent system uses qwen3-14b served by vLLM optimized for Intel, delivering sub-second tool calling at scale across all 5 agent personas.
 
 This demonstrates that production-grade agentic AI workloads run efficiently on Intel's AI infrastructure, with Red Hat OpenShift AI providing the enterprise platform layer for deployment, observability, and lifecycle management.
