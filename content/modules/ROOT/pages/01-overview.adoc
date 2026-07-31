@@ -7,7 +7,7 @@
 
 == What is AgentOps?
 
-Traditional DevOps taught us to monitor, debug, and maintain software systems in production. But AI agents introduce new challenges: non-deterministic behavior, multi-agent orchestration, LLM quality variations, and distributed tool calls.
+Traditional DevOps taught us to monitor, debug, and maintain software systems in production. But AI agents introduce new challenges: non-deterministic behavior, multi-agent orchestration, large language model (LLM) quality variations, and distributed tool calls.
 
 **AgentOps** extends observability practices to handle these realities. Beyond tracking request rates and latency, you need to trace agent reasoning paths, measure token consumption, validate tool call success, and continuously evaluate output quality.
 
@@ -19,15 +19,15 @@ You're a senior engineer at Fed Aura Capital, a mortgage lending company that ha
 
 Your CTO has called an emergency meeting: "Our AI agents are failing in production, but we can't see where or why. Customer complaints are rising, loan processing times are unpredictable, and we have no visibility into what's happening inside these multi-agent workflows. We need end-to-end observability. Yesterday."
 
-**Your assignment**: Implement a comprehensive AgentOps observability strategy using Red Hat OpenShift AI to gain full visibility into your multi-agent system.
+**Your assignment**: Implement a comprehensive AgentOps observability strategy using Red Hat OpenShift AI (RHOAI) to gain full visibility into your multi-agent system.
 
-**The objective**: Establish monitoring, tracing, and evaluation capabilities that allow your team to diagnose distributed failures, understand agent decision paths, and ensure consistent quality across all AI-powered workflows.
+**The objective**: Establish monitoring and tracing capabilities that allow your team to diagnose distributed failures, understand agent decision paths, and ensure consistent quality across all AI-powered workflows.
 
 == Fed Aura Capital's challenges
 
 **The situation**: Fed Aura Capital has deployed a multi-agent AI system handling mortgage applications, but lacks visibility into the distributed workflows spanning multiple agents and MCP (Model Context Protocol, a standard for connecting AI agents to external tools and data sources) tools.
 
-**Project timeline**: The board has given the engineering team two weeks to demonstrate improved observability and reduced incident response time.
+**Project timeline**: The board has given the engineering team 2 weeks to demonstrate improved observability and reduced incident response time.
 
 **Current challenges** (operational pain points):
 
@@ -42,6 +42,6 @@ Your CTO has called an emergency meeting: "Our AI agents are failing in producti
 
 == Hardware: Intel Gaudi 3
 
-The AI inference powering this lab runs on Intel Gaudi 3 accelerators — Intel's purpose-built AI hardware platform. The multi-agent system uses qwen3-14b served by vLLM optimized for Intel Gaudi, delivering sub-second tool calling at scale across all five agent personas.
+The AI inference powering this lab runs on Intel Gaudi 3 accelerators -- Intel's purpose-built AI hardware platform. The multi-agent system uses qwen3-14b served by vLLM optimized for Intel Gaudi, delivering sub-second tool calling at scale across all 5 agent personas.
 
 This demonstrates that production-grade agentic AI workloads run efficiently on Intel's AI infrastructure, with Red Hat OpenShift AI providing the enterprise platform layer for deployment, observability, and lifecycle management.

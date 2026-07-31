@@ -10,9 +10,8 @@
 * xref:05-module-03-metrics-kpis.adoc[Module 3: Metrics & Logs]
 * xref:06-module-04-tracing-mlflow.adoc[Module 4: Tracing & MLflow]
 
-.Advanced Modules (Optional)
-* xref:07-module-05-evals.adoc[Module 5: Agent & LLM Evaluations]
-* xref:08-module-06-dev-to-production.adoc[Module 6: Dev to Production]
+.Advanced Module (Optional)
+* xref:08-module-06-dev-to-production.adoc[Module 5: Dev to Production]
 
 .Conclusion
 * xref:09-conclusion.adoc[Conclusion]

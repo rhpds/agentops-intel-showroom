@@ -31,12 +31,12 @@ image::select-mlflow-wksp.png[MLflow UI welcome page showing workspace selection
 +
 NOTE: Red Hat OpenShift AI (RHOAI) deploys a single shared MLflow instance that provides namespace-based isolation through **workspaces**. Each data science project (OpenShift namespace) maps to its own MLflow workspace, giving teams logically separated experiments, traces, registered models, and prompts, all while sharing a single tracking server.
 
-. MLflow provides three main capabilities. For this module, you'll focus on **Tracing** to analyze the agent workflows from Module 1:
+. MLflow provides 3 main capabilities. For this module, you'll focus on **Tracing** to analyze the agent workflows from Module 1:
 +
 --
 * **Tracing**: Capture and debug LLM interactions and agent workflows
-* **Evaluation**: Measure and compare LLM quality with built-in and custom scorers (Module 5)
-* **Prompts**: Version control and manage prompts with aliases across teams (Module 5)
+* **Evaluation**: Measure and compare LLM quality with built-in and custom scorers
+* **Prompts**: Version control and manage prompts with aliases across teams
 --
 
 == How does tracing work?
@@ -45,7 +45,7 @@ When you deployed the mortgage-ai application in Module 1, tracing was already e
 
 === MLflow autolog: one-line tracing
 
-MLflow Tracing integrates with https://mlflow.org/docs/latest/genai/tracing/integrations/#agent-frameworks-python[40+ popular LLM and AI agent frameworks^], offering a **one-line automatic tracing** experience. Call `autolog()` once at application startup, and all your LangChain operations (LLM calls, tool invocations, agent decisions) are automatically captured—no changes needed to your agent logic.
+MLflow Tracing integrates with https://mlflow.org/docs/latest/genai/tracing/integrations/#agent-frameworks-python[40+ popular LLM and AI agent frameworks^], offering a **one-line automatic tracing** experience. Call `autolog()` once at application startup, and all your LangChain operations (LLM calls, tool invocations, agent decisions) are automatically captured--no changes needed to your agent logic.
 
 The mortgage-ai application uses https://mlflow.org/docs/latest/genai/tracing/integrations/listing/langchain/[LangChain autologging^]. In https://github.com/rh-ai-quickstart/multi-agent-loan-origination/blob/main/packages/api/src/observability.py#L105[observability.py^], the entire tracing setup is:
 
@@ -81,7 +81,7 @@ In Module 1, you clicked **Explore Products** and chatted with the Prospect Agen
 +
 image::mlflow2.png[MLflow Traces list showing captured requests from Module 1 interactions,link=self,window=blank,width=700]
 +
-Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Your traces list will show only the conversations you had in Module 1. Look for the trace at the bottom: _"What mortgage products do you offer? I'd like to compare my options."_ — this is the Explore Products conversation.
+Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Your traces list will show only the conversations you had in Module 1. Look for the trace at the bottom: _"What mortgage products do you offer? I'd like to compare my options."_ -- this is the Explore Products conversation.
 +
 NOTE: The screenshot above shows a sample environment. Your own traces list will contain only your Module 1 interactions: the Explore Products chat and your CEO conversations.
 
@@ -92,8 +92,8 @@ image::mlflow3.png[MLflow trace summary for the Explore Products conversation sh
 The Summary tab reveals what was invisible in Module 1:
 +
 --
-* **Inputs**: The user context — notice that `user_email` and `user_name` are empty. The Prospect Agent serves unauthenticated visitors, so only a session `user_id` is captured.
-* **Span sequence**: A single `ChatOpenAI was called` span — the Prospect Agent answered this question directly from its training, with no tool invocations needed.
+* **Inputs**: The user context -- notice that `user_email` and `user_name` are empty. The Prospect Agent serves unauthenticated visitors, so only a session `user_id` is captured.
+* **Span sequence**: A single `ChatOpenAI was called` span -- the Prospect Agent answered this question directly from its training, with no tool invocations needed.
 * **Outputs**: The complete response returned to the user, including the same user context fields.
 --
 +
@@ -257,9 +257,9 @@ This is especially valuable for debugging multi-turn conversations where agent b
 
 You've completed the core observability modules! You now have metrics, traces, and logs working together to monitor your multi-agent system.
 
-**Option 1 - Continue to Advanced Topics (recommended if time permits):**
+**Option 1 - Continue to Advanced Topic (recommended if time permits):**
 
-link:07-module-05-evals.html[Module 5: Agent & LLM Evaluations] introduces quality assessment frameworks, combining tracing with evaluations to catch regressions before production. link:08-module-06-dev-to-production.html[Module 6] automates these evaluations into CI/CD pipelines.
+link:08-module-06-dev-to-production.html[Module 5: Dev to Production] shows how to automate quality monitoring with AI Pipelines, moving from manual notebook workflows to automated, schedulable pipeline runs.
 
 **Option 2 - Skip to Conclusion:**
 

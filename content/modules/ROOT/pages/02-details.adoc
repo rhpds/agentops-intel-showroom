@@ -13,7 +13,7 @@ This workshop builds incrementally. Each module depends on concepts from previou
 
 **Core Practice (Modules 3-4)**: Work directly with metrics, logs, and tracing. You'll explore Grafana dashboards and configure MLflow tracing for the multi-agent system.
 
-**Optional Advanced Topics (Modules 5-6)**: For those with more advanced knowledge or who finish more quickly, implement LLM evaluations and automated quality monitoring. These modules require additional time but provide deeper expertise in quality assurance.
+**Optional Advanced Topic (Module 5)**: For those with more advanced knowledge or who finish more quickly, explore the path from development to production with automated AI pipelines. This module requires additional time but provides deeper expertise in production workflows.
 
 Feel free to revisit earlier modules as needed. The concepts build on each other, so if something isn't clear later, go back and review.
 
@@ -34,7 +34,7 @@ The workshop interface is designed to let you read instructions while working in
 
 **View modes** (top navigation):
 
-image::view-modes.png[]
+image::view-modes.png[Workshop view mode options showing Instructions Split and Tabs layouts,link=self]
 
 * **Instructions**: Full-page instructions (hide environment tabs)
 * **Split**: Side-by-side view (current default) - see both instructions and environment
@@ -100,12 +100,6 @@ If you get stuck during the workshop:
 
 |Scorer
 |A function that evaluates the quality of an agent's response (deterministic or LLM-powered)
-
-|Inner Loop
-|Manual, developer-driven evaluation workflow (e.g., running evaluations from a Jupyter notebook)
-
-|Outer Loop
-|Automated, platform-driven evaluation workflow (e.g., scheduled AI Pipelines)
 
 |RBAC
 |Role-Based Access Control, restricting system access based on user roles
