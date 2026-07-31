@@ -18,7 +18,7 @@ podman run --rm --name antora -v $PWD:/antora -p 8080:8080 -i -t ghcr.io/juliaaa
 podman run --rm --name antora -v $PWD:/antora:z -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
 
 # Manual Antora build (no server)
-npx @antora/cli@3.1 --fetch default-site.yml
+npx @antora/cli@3.1 --fetch site.yml
 # Output goes to ./www/
 ```
 
@@ -33,7 +33,7 @@ This is an [Antora](https://antora.org) site using the [RHDP Showroom theme](htt
 - `content/modules/ROOT/pages/` — AsciiDoc lab content (numbered `01-` through `09-`)
 - `content/modules/ROOT/assets/images/` — screenshots referenced by pages
 - `content/supplemental-ui/` — theme overrides (CSS, JS, Handlebars partials)
-- `default-site.yml` — Antora playbook for local/CI builds
+- `site.yml` — Antora playbook for local/CI builds
 - `.github/workflows/gh-pages.yml` — deploys to GitHub Pages on push to `main`
 - `examples/` — Showroom template examples (demo/workshop), not part of the live lab
 
