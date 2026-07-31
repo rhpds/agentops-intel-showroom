@@ -24,3 +24,4 @@ asciidoc:
     # Tool URLs
     oc_client_download_url: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz"
     mlflow_route: "mlflow-redhat-ods-applications.apps.cluster.example.com"
+    mlflow_tracking_uri: "pass:[https://mlflow.redhat-ods-applications.svc.cluster.local:8443]"

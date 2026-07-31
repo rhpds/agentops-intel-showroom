@@ -13,13 +13,13 @@ This workshop runs on **Intel Gaudi 3 AI accelerators** via the Red Hat Demo Pla
 |qwen3-14b on Intel Gaudi 3 (rac-maas, 8 cards / 2 replicas)
 
 |**Model Serving**
-|vLLM optimized for Intel Gaudi — with HPU graph compilation and expert parallelism
+|vLLM optimized for Intel Gaudi -- with Habana Processing Unit (HPU) graph compilation and expert parallelism
 
 |**Infrastructure**
 |Red Hat OpenShift AI on Intel Gaudi 3 nodes
 |===
 
-== Model-to-Hardware Mapping
+== Model-to-hardware mapping
 
 [cols="1,1,1",options="header"]
 |===
@@ -31,7 +31,7 @@ This workshop runs on **Intel Gaudi 3 AI accelerators** via the Red Hat Demo Pla
 
 |===
 
-== Why Intel Gaudi for AI Inference?
+== Why Intel Gaudi for AI inference?
 
 * **Purpose-built for AI**: Intel Gaudi 3 is designed from the ground up for deep learning training and inference workloads
 * **High throughput**: 128 GB HBM2e per card with 3.7 TB/s bandwidth delivers consistent performance under load
@@ -39,7 +39,7 @@ This workshop runs on **Intel Gaudi 3 AI accelerators** via the Red Hat Demo Pla
 * **Production validated**: This lab has been load-tested at 150 concurrent users with zero errors and sub-second tool calling
 * **Enterprise-ready**: Integrated with Red Hat OpenShift AI for deployment, observability, and lifecycle management
 
-== Performance Benchmarks
+== Performance benchmarks
 
 Tested with real system prompts across all 5 agent personas:
 
@@ -55,6 +55,6 @@ Tested with real system prompts across all 5 agent personas:
 |Concurrent capacity |150+ seats validated
 |===
 
-== Intel Partnership
+== Intel partnership
 
-This lab is part of the **Red Hat + Intel AI Partnership** — demonstrating that production-grade multi-agent AI workloads run efficiently on Intel's AI hardware platform with Red Hat OpenShift AI providing the enterprise platform layer.
+This lab is part of the **Red Hat + Intel AI Partnership** -- demonstrating that production-grade multi-agent AI workloads run efficiently on Intel's AI hardware platform with Red Hat OpenShift AI providing the enterprise platform layer.
