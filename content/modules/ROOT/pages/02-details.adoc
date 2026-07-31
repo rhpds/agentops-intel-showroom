@@ -117,7 +117,7 @@ If you get stuck during the workshop:
 
 == Authors and contributors
 
-**Primary Author**: Red Hat AI AI Business Unit +
+**Primary Author**: Red Hat AI Business Unit +
 **Authors**: Roberto Carratalá, Taylor Smith +
 **Last Updated**: April 2026 +
 **Workshop Version**: 1.0

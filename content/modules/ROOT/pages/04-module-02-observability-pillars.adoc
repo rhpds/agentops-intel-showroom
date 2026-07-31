@@ -14,7 +14,7 @@ Remember when you asked the CEO Assistant "What's the portfolio health?" in Modu
 * **15+ log events**: Agent decisions, tool parameters, prompt/completion pairs, database results
 * **1 distributed trace**: Spanning 5+ LLM calls and 3+ tool invocations across the CEO agent workflow
 
-All you saw was the final answer. The decision-making process--which tools were called, how long each step took, whether any calls failed--remained completely invisible.
+All you saw was the final answer. The decision-making process (which tools were called, how long each step took, whether any calls failed) remained completely invisible.
 
 **This is the observability gap in action.**
 
@@ -90,9 +90,9 @@ Before diving into tools and implementation, let's establish a shared vocabulary
 * Agent-to-agent handoff sequences
 * Complete decision paths from input to output
 
-image::arch1.png[Observability for Agentic AI Systems: 3 pillars with metrics logs and traces flowing into observability backends,link=self,window=blank,width=700]
+image::arch1.png[Observability for Agentic AI Systems: 3 pillars with metrics logs and traces flowing into observability backends,link=self,width=700]
 
-== Exercise 1: Map pillars to Fed Aura Capital needs
+== Exercise 1: map pillars to Fed Aura Capital needs
 
 Let's apply these concepts to Fed Aura Capital's multi-agent mortgage system.
 
@@ -152,11 +152,11 @@ Let's apply these concepts to Fed Aura Capital's multi-agent mortgage system.
 *Traces*: distributed traces reconstruct the full request flow across all agents.
 ====
 
-== Exercise 2: 2 personas, one observability stack
+== Exercise 2: 2 personas, 1 observability stack
 
 At Fed Aura Capital, 2 primary teams need observability but focus on different things. Let's identify who owns what in the AgentOps observability stack.
 
-image::arch2.png[AgentOps Observability Stack showing SRE and AI Developer personas,link=self,window=blank,width=700]
+image::arch2.png[AgentOps Observability Stack showing SRE and AI Developer personas,link=self,width=700]
 
 The stack serves both personas:
 

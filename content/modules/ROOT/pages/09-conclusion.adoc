@@ -71,7 +71,7 @@ Ready to continue your AgentOps journey? Here are some recommended paths:
 
 === Apply to your own systems
 
-. **Start with tracing**: If you only implement one thing, make it MLflow tracing--it delivers end-to-end visibility into agent failures.
+. **Start with tracing**: If you only implement one thing, make it MLflow tracing. It delivers end-to-end visibility into agent failures.
 
 . **Define your personas**: Identify who needs observability data (SREs, AI developers) and what questions they need answered.
 

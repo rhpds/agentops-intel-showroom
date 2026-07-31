@@ -27,7 +27,7 @@ Red Hat OpenShift AI includes MLflow as part of the platform.
 
 . Navigate to the *MLflow Console* tab. If prompted, log in with username `{user}`, password `{password}`. Then select `{user_project}` from the **Select workspace** dropdown in the top-left corner:
 +
-image::select-mlflow-wksp.png[MLflow UI welcome page showing workspace selection and core features,link=self,window=blank,width=700]
+image::select-mlflow-wksp.png[MLflow UI welcome page showing workspace selection and core features,link=self,width=700]
 +
 NOTE: Red Hat OpenShift AI (RHOAI) deploys a single shared MLflow instance that provides namespace-based isolation through **workspaces**. Each data science project (OpenShift namespace) maps to its own MLflow workspace, giving teams logically separated experiments, traces, registered models, and prompts, all while sharing a single tracking server.
 
@@ -45,7 +45,7 @@ When you deployed the mortgage-ai application in Module 1, tracing was already e
 
 === MLflow autolog: one-line tracing
 
-MLflow Tracing integrates with https://mlflow.org/docs/latest/genai/tracing/integrations/#agent-frameworks-python[40+ popular LLM and AI agent frameworks^], offering a **one-line automatic tracing** experience. Call `autolog()` once at application startup, and all your LangChain operations (LLM calls, tool invocations, agent decisions) are automatically captured--no changes needed to your agent logic.
+MLflow Tracing integrates with https://mlflow.org/docs/latest/genai/tracing/integrations/#agent-frameworks-python[40+ popular LLM and AI agent frameworks^], offering a **one-line automatic tracing** experience. Call `autolog()` once at application startup, and all your LangChain operations (LLM calls, tool invocations, and agent decisions) are automatically captured. No changes are needed to your agent logic.
 
 The mortgage-ai application uses https://mlflow.org/docs/latest/genai/tracing/integrations/listing/langchain/[LangChain autologging^]. In https://github.com/rh-ai-quickstart/multi-agent-loan-origination/blob/main/packages/api/src/observability.py#L105[observability.py^], the entire tracing setup is:
 
@@ -69,7 +69,7 @@ MLflow's automatic tracing provides:
 
 === OpenTelemetry compatibility
 
-MLflow Tracing is built on https://opentelemetry.io/[OpenTelemetry^], the industry standard for distributed tracing. This means you can also export traces to other backends (Jaeger, Zipkin, Grafana Tempo) alongside MLflow.
+MLflow Tracing is built on https://opentelemetry.io/[OpenTelemetry^], a widely adopted standard for distributed tracing. This means you can also export traces to other backends (Jaeger, Zipkin, and Grafana Tempo) alongside MLflow.
 
 == Exercise 2: Find your first trace
 
@@ -79,21 +79,21 @@ In Module 1, you clicked **Explore Products** and chatted with the Prospect Agen
 
 . Click **Traces** in the left sidebar. You'll see a list of all traced requests, sorted by most recent:
 +
-image::mlflow2.png[MLflow Traces list showing captured requests from Module 1 interactions,link=self,window=blank,width=700]
+image::mlflow2.png[MLflow Traces list showing captured requests from Module 1 interactions,link=self,width=700]
 +
-Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Your traces list will show only the conversations you had in Module 1. Look for the trace at the bottom: _"What mortgage products do you offer? I'd like to compare my options."_ -- this is the Explore Products conversation.
+Each row shows the **Trace ID**, the **Request** (what the user asked), the **Response** (what the agent returned), **Execution time**, and **State**. Your traces list will show only the conversations you had in Module 1. Look for the trace at the bottom: _"What mortgage products do you offer? I'd like to compare my options."_ This is the Explore Products conversation.
 +
 NOTE: The screenshot above shows a sample environment. Your own traces list will contain only your Module 1 interactions: the Explore Products chat and your CEO conversations.
 
 . Click on that trace to open its **Summary** view:
 +
-image::mlflow3.png[MLflow trace summary for the Explore Products conversation showing user_id input and a single ChatOpenAI span,link=self,window=blank,width=700]
+image::mlflow3.png[MLflow trace summary for the Explore Products conversation showing user_id input and a single ChatOpenAI span,link=self,width=700]
 +
 The Summary tab reveals what was invisible in Module 1:
 +
 --
-* **Inputs**: The user context -- notice that `user_email` and `user_name` are empty. The Prospect Agent serves unauthenticated visitors, so only a session `user_id` is captured.
-* **Span sequence**: A single `ChatOpenAI was called` span -- the Prospect Agent answered this question directly from its training, with no tool invocations needed.
+* **Inputs**: The user context; notice that `user_email` and `user_name` are empty. The Prospect Agent serves unauthenticated visitors, so only a session `user_id` is captured.
+* **Span sequence**: A single `ChatOpenAI was called` span. The Prospect Agent answered this question directly from its training, with no tool invocations needed.
 * **Outputs**: The complete response returned to the user, including the same user context fields.
 --
 +
@@ -105,13 +105,13 @@ Remember Module 1, Exercise 3? You signed in as CEO David Park, asked _"Show me 
 
 Now let's close that gap.
 
-image::mlflow4.png[CEO Executive Dashboard showing the portfolio health question and agent response from Module 1,link=self,window=blank,width=700]
+image::mlflow4.png[CEO Executive Dashboard showing the portfolio health question and agent response from Module 1,link=self,width=700]
 
 === Find the CEO trace
 
 . Return to the MLflow **Traces** list and locate the trace for _"Show me the current pipeline status"_:
 +
-image::find-trace.png[MLflow Traces list with the pipeline status trace highlighted,link=self,window=blank,width=700]
+image::find-trace.png[MLflow Traces list with the pipeline status trace highlighted,link=self,width=700]
 +
 Notice the execution time. That's the total end-to-end latency for a question that seemed to be answered instantly in the chat UI.
 
@@ -120,7 +120,7 @@ Notice the execution time. That's the total end-to-end latency for a question th
 [start=2]
 . Click on the trace to open the **Summary** tab.
 +
-image::trace-summary.png[MLflow trace summary showing David Park user identity and the span sequence with ChatOpenAI and ceo_pipeline_summary calls,link=self,window=blank,width=700]
+image::trace-summary.png[MLflow trace summary showing David Park user identity and the span sequence with ChatOpenAI and ceo_pipeline_summary calls,link=self,width=700]
 +
 MLflow captures the full user context with every trace:
 +
@@ -139,7 +139,7 @@ NOTE: If you don't see a tool call (e.g., `ceo_pipeline_summary`) in the span se
 [start=3]
 . Click the **Details & Timeline** tab, then click **Show execution timeline** to see the full trace breakdown:
 +
-image::nav-execution-timeline.png[MLflow Details and Timeline view showing the full execution tree from LangGraph through input shield agent ChatOpenAI tool calls and output shield,link=self,window=blank,width=700]
+image::nav-execution-timeline.png[MLflow Details and Timeline view showing the full execution tree from LangGraph through input shield agent ChatOpenAI tool calls and output shield,link=self,width=700]
 +
 The trace tree shows the complete execution path: `LangGraph` → `input_shield` → `after_input_shield` → `agent` → `ChatOpenAI` (decides to call a tool) → `should_continue` → `tool_auth` → `after_tool_auth` → `tools` → `ceo_pipeline_summary` (fetches pipeline data) → `agent` → `ChatOpenAI` (composes the response) → `should_continue` → `output_shield`. Now you can answer every question from Module 1's observability challenge.
 +
@@ -193,7 +193,7 @@ The trace tree shows the complete execution path: `LangGraph` → `input_shield`
 [start=4]
 . In the trace tree, click on the **ceo_pipeline_summary** span to see the tool's inputs and outputs:
 +
-image::mlflow7.png[MLflow span detail for ceo_pipeline_summary showing input days=90 and output with pipeline summary data,link=self,window=blank,width=700]
+image::mlflow7.png[MLflow span detail for ceo_pipeline_summary showing input days=90 and output with pipeline summary data,link=self,width=700]
 +
 --
 * **Inputs**: `days: 90`, the tool queries a 90-day window of pipeline data
@@ -207,10 +207,10 @@ This is where the agent got its numbers. If the CEO's response ever contains inc
 [start=5]
 . Click on the final **ChatOpenAI** span to see the actual LLM invocation:
 +
-image::mlflow8.png[MLflow span detail for ChatOpenAI showing model gpt-oss-120b with system prompt and completion,link=self,window=blank,width=700]
+image::mlflow8.png[MLflow span detail for ChatOpenAI showing model qwen3-14b with system prompt and completion,link=self,width=700]
 +
 --
-* **Model**: `gpt-oss-120b`, the exact model serving this request
+* **Model**: `qwen3-14b`, the exact model serving this request (on Intel Gaudi 3)
 * **Inputs → messages**: The system prompt (_"You are the Fed Aura Capital executive assistant"_) and the conversation context including the tool result
 * **Outputs → choices**: The complete LLM response before any post-processing
 --
@@ -227,15 +227,15 @@ Many real-world AI applications use sessions to maintain multi-turn user interac
 
 . In MLflow, click **Sessions** in the left sidebar under **Observability**:
 +
-image::sessions0.png[MLflow left sidebar showing Sessions under Observability,link=self,window=blank,width=700]
+image::sessions0.png[MLflow left sidebar showing Sessions under Observability,link=self,width=700]
 
 . In the mortgage-ai application, each chat conversation is tracked as a session. MLflow groups all turns within a session together, letting you see the full conversation flow:
 
-image::sessions1.png[MLflow Chat Sessions view showing a session with 7 turns grouped by user and agent,link=self,window=blank,width=700]
+image::sessions1.png[MLflow Chat Sessions view showing a session with 7 turns grouped by user and agent,link=self,width=700]
 
 Clicking into a session reveals each turn with its inputs and outputs. You can click **View full trace** on any turn to jump directly to the detailed trace view:
 
-image::sessions2.png[MLflow session detail showing Turn 1 with inputs outputs and View full trace link,link=self,window=blank,width=700]
+image::sessions2.png[MLflow session detail showing Turn 1 with inputs outputs and View full trace link,link=self,width=700]
 
 This is especially valuable for debugging multi-turn conversations where agent behavior degrades over time. You can see the full context the agent had at each step.
 
