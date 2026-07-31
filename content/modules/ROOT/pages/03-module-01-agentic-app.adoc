@@ -21,7 +21,7 @@ By the end of this module, you'll be able to:
 
 == Exercise 1: Access the application UI
 
-TIP: Throughout this workshop, all key services are accessible as *tabs* — no need to open separate browser windows.
+TIP: Throughout this workshop, all key services are accessible as *tabs* (no separate browser windows needed).
 
 . First, log in to the OpenShift cluster from the **Terminal** tab:
 +
@@ -32,32 +32,32 @@ oc login --insecure-skip-tls-verify $(oc whoami --show-server) -u {user} -p {pas
 
 . Navigate to the *OCP Console* tab. Log in with the same credentials you just used: username `{user}`, password `{password}`:
 +
-image::agentic-app-pre1.png[OpenShift SSO login page,link=self,window=blank,width=500]
+image::agentic-app-pre1.png[OpenShift SSO login page,link=self,width=500]
 
 . Once logged in, you will see the `Projects` page and a single project: `{user_project}`. Navigate to **Workloads > Pods** to see the mortgage-ai components running in your namespace:
 +
-image::workloads-pods.png[]
+image::workloads-pods.png[OpenShift Console Workloads Pods page showing mortgage-ai components,link=self]
 +
 If you do not see pods, make sure you select your project:
 +
-image::select-project.png[]
-image::agentic-app0.png[OpenShift Console Pods view showing mortgage-ai components running,link=self,window=blank,width=700]
+image::select-project.png[OpenShift project selector dropdown,link=self]
+image::agentic-app0.png[OpenShift Console Pods view showing mortgage-ai components running,link=self,width=700]
 +
 You will explore these components in Exercise 2.
 
 . Navigate to the *Mortgage AI App* tab:
 
 +
-image::mortgage-app.png[]
+image::mortgage-app.png[Mortgage AI application landing page,link=self]
 +
 
 . Scroll down a bit. Try a sample conversation clicking the **Explore Products** button:
 +
-image::explore-products.png[Explore Products button on the Fed Aura Capital landing page,link=self,window=blank,width=400]
+image::explore-products.png[Explore Products button on the Fed Aura Capital landing page,link=self,width=400]
 +
 The Prospect Agent should respond with mortgage product options:
 +
-image::agentic-app2.png[Mortgage-AI chat interface with Prospect Agent responding with loan options,link=self,window=blank,width=700]
+image::agentic-app2.png[Mortgage-AI chat interface with Prospect Agent responding with loan options,link=self,width=700]
 
 NOTE: The LLM backend has rate limiting and may occasionally time out. If the agent does not respond or you see an error, reload the page and ask the question again.
 
@@ -73,7 +73,7 @@ The mortgage-ai system runs as **a single FastAPI service with 5 LangGraph agent
 
 **System architecture:**
 
-image::agentic-app-pre2.png[Mortgage AI system architecture showing React frontend connecting via WebSocket to FastAPI backend with 5 agent personas and PostgreSQL with pgvector and MinIO object storage,link=self,window=blank,width=700]
+image::agentic-app-pre2.png[Mortgage AI system architecture showing React frontend connecting via WebSocket to FastAPI backend with 5 agent personas and PostgreSQL with pgvector and MinIO object storage,link=self,width=700]
 
 **Deployed components:**
 
@@ -82,7 +82,7 @@ image::agentic-app-pre2.png[Mortgage AI system architecture showing React fronte
 |Component |Purpose
 
 |mortgage-ai-api
-|**One FastAPI pod** containing all 5 agent implementations, routes by role via WebSocket
+|**1 FastAPI pod** containing all 5 agent implementations, routes by role via WebSocket
 
 |mortgage-ai-ui
 |React frontend for interacting with agents
@@ -99,9 +99,9 @@ image::agentic-app-pre2.png[Mortgage AI system architecture showing React fronte
 
 === The 5 agent personas
 
-Each agent has its own endpoint, tools, and responsibilities. They **don't call each other** directly—instead, they're isolated workflows serving different user roles:
+Each agent has its own endpoint, tools, and responsibilities. They **don't call each other** directly. Instead, they're isolated workflows serving different user roles:
 
-image::agentic-app-pre3.png[The 5 agent personas showing Prospect and Borrower and Loan Officer and Underwriter and CEO with their roles and capabilities routing into a single FastAPI deployment via WebSocket,link=self,window=blank,width=700]
+image::agentic-app-pre3.png[The 5 agent personas showing Prospect and Borrower and Loan Officer and Underwriter and CEO with their roles and capabilities routing into a single FastAPI deployment via WebSocket,link=self,width=700]
 
 [cols="1,1,2,2",options="header"]
 |===
@@ -164,14 +164,14 @@ IMPORTANT: **Common failure modes in multi-agent architectures** +
 Understanding how these systems fail is key to implementing effective observability: +
  +
 • **Silent tool failures**: MCP tool returns empty data, but the agent proceeds anyway and generates a response based on incomplete information +
-• **Cascading latency**: A slow database query delays the LLM call, which delays the response—but you can't tell which step caused the bottleneck +
+• **Cascading latency**: A slow database query delays the LLM call, which delays the response, but you can't tell which step caused the bottleneck +
 • **Context overflow**: Agent tries to pass too much data to the LLM, the call fails with a cryptic error, and the user sees a generic timeout +
 • **Non-deterministic failures**: The same question produces different results due to LLM variations, making bugs difficult to reproduce +
 • **Distributed failures**: One agent's tool call fails, affecting downstream agents without clear error propagation
 
 === Verify the deployment
 
-Before exploring the application, let's confirm all components are running and healthy. We'll check two things: that the OpenShift pods are ready, and that the API can successfully connect to its database.
+Before exploring the application, let's confirm all components are running and healthy. We'll check 2 things: that the OpenShift pods are ready, and that the API can successfully connect to its database.
 
 . Navigate to the **Terminal** tab. View the pods and their status:
 +
@@ -225,23 +225,23 @@ You'll interact with the application as a CEO and ask the assistant a question. 
 . From the application landing page, click **Sign In**. 
 
 +
-image::sign-in.png[]
+image::sign-in.png[Mortgage AI application Sign In button,link=self]
 +
 
 . In the sign-in dialog, use the **Persona Demo Login** section at the bottom and select the **CEO** persona:
 
 +
-image::agentic-app4.png[Sign in dialog with Persona Demo Login showing CEO selection,link=self,window=blank,width=700]
+image::agentic-app4.png[Sign in dialog with Persona Demo Login showing CEO selection,link=self,width=700]
 +
 . Click `Sign In`:
 
 +
-image::ceo-sign-in.png[]
+image::ceo-sign-in.png[CEO persona Sign In button in the demo login section,link=self]
 +
 
 . After signing in, you'll land on the **Executive Dashboard**, the CEO persona's view of portfolio health and operations:
 +
-image::agentic-app5.png[CEO Executive Dashboard showing Pipeline Overview and Denial Analysis,link=self,window=blank,width=700]
+image::agentic-app5.png[CEO Executive Dashboard showing Pipeline Overview and Denial Analysis,link=self,width=700]
 
 . In the **Your Assistant** chat panel on the right, type the following question (if needed, adjust the center divider to reveal the chat panel or select the chat icon in the bottom right corner):
 +
@@ -252,11 +252,11 @@ Show me the current pipeline status
 
 . The assistant responds with a detailed portfolio health overview: active applications, stage breakdown, pull-through rate, and average days to close:
 +
-image::agentic-app6.png[CEO Assistant responding with portfolio health overview,link=self,window=blank,width=700]
+image::agentic-app6.png[CEO Assistant responding with portfolio health overview,link=self,width=700]
 
 === Build a conversation for later analysis
 
-Before we move on, let's generate a richer session with multiple conversation exchanges (called "turns" in AI terminology — each turn is one question from you and one response from the agent). This will give us more data to explore when we get to tracing in Module 4.
+Before we move on, let's generate a richer session with multiple conversation exchanges (called "turns" in AI terminology; each turn is one question from you and one response from the agent). This will give us more data to explore when we get to tracing in Module 4.
 
 [start=5]
 . In the same chat, ask a follow-up question:
@@ -308,11 +308,11 @@ This is why AgentOps requires specialized observability: you need to see inside 
 ====
 This application demonstrates key patterns for regulated industries:
 
-* **Multi-agent orchestration**: 5 LangGraph agents with role-scoped tools and RBAC enforcement
+* **Multi-agent orchestration**: 5 LangGraph agents with role-scoped tools and role-based access control (RBAC) enforcement
 * **Compliance knowledge base**: RAG using pgvector with tiered boosting (federal regulations > agency guidelines > internal policies)
 * **Model routing**: Complexity-based routing between fast and capable LLM tiers
 * **Comprehensive audit trail**: Hash-chained, append-only audit events with MLflow trace correlation
-* **PII masking**: Middleware-based masking for executive roles (SSN, DOB, account numbers)
+* **Personally identifiable information (PII) masking**: Middleware-based masking for executive roles (SSN, DOB, account numbers)
 * **Safety shields**: Input and output content filters with escalation pattern detection
 ====
 

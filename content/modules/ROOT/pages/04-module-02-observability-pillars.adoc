@@ -14,13 +14,13 @@ Remember when you asked the CEO Assistant "What's the portfolio health?" in Modu
 * **15+ log events**: Agent decisions, tool parameters, prompt/completion pairs, database results
 * **1 distributed trace**: Spanning 5+ LLM calls and 3+ tool invocations across the CEO agent workflow
 
-All you saw was the final answer. The decision-making process—which tools were called, how long each step took, whether any calls failed—remained completely invisible.
+All you saw was the final answer. The decision-making process (which tools were called, how long each step took, whether any calls failed) remained completely invisible.
 
 **This is the observability gap in action.**
 
 In this module, you'll learn the 3 pillars of observability (metrics, logs, traces) that make that invisible decision-making process visible. You'll understand what Fed Aura Capital needs to capture from your CEO conversation to debug issues, optimize performance, and ensure quality.
 
-NOTE: This is a conceptual module: no terminal or cluster work required. The goal is to build a shared vocabulary before diving into hands-on tooling in Modules 3-6.
+NOTE: This is a conceptual module: no terminal or cluster work required. The goal is to build a shared vocabulary before diving into hands-on tooling in Modules 3-5.
 
 == Learning objectives
 
@@ -35,7 +35,7 @@ By the end of this module, you'll be able to:
 
 Before diving into tools and implementation, let's establish a shared vocabulary for observability in the context of agentic AI systems.
 
-=== Pillar 1: Metrics
+=== Pillar 1: metrics
 
 **Definition**: Numeric measurements collected at regular intervals that represent the state of a system.
 
@@ -54,7 +54,7 @@ Before diving into tools and implementation, let's establish a shared vocabulary
 * Agent handoff frequencies
 * Model response quality scores
 
-=== Pillar 2: Logs
+=== Pillar 2: logs
 
 **Definition**: Timestamped, immutable records of discrete events.
 
@@ -72,7 +72,7 @@ Before diving into tools and implementation, let's establish a shared vocabulary
 * Compliance audit events (critical for Fed Aura Capital!)
 * Agent state transitions
 
-=== Pillar 3: Traces
+=== Pillar 3: traces
 
 **Definition**: Records of the path of a request as it propagates through a distributed system.
 
@@ -90,9 +90,9 @@ Before diving into tools and implementation, let's establish a shared vocabulary
 * Agent-to-agent handoff sequences
 * Complete decision paths from input to output
 
-image::arch1.png[Observability for Agentic AI Systems: 3 pillars with metrics logs and traces flowing into observability backends,link=self,window=blank,width=700]
+image::arch1.png[Observability for Agentic AI Systems: 3 pillars with metrics logs and traces flowing into observability backends,link=self,width=700]
 
-== Exercise 1: Map pillars to Fed Aura Capital needs
+== Exercise 1: map pillars to Fed Aura Capital needs
 
 Let's apply these concepts to Fed Aura Capital's multi-agent mortgage system.
 
@@ -108,7 +108,7 @@ Let's apply these concepts to Fed Aura Capital's multi-agent mortgage system.
 
 |Logs
 |Error messages
-|Agent reasoning chains, compliance audit trail, PII access logs
+|Agent reasoning chains, compliance audit trail, personally identifiable information (PII) access logs
 
 |Traces
 |Service call graph
@@ -152,16 +152,16 @@ Let's apply these concepts to Fed Aura Capital's multi-agent mortgage system.
 *Traces*: distributed traces reconstruct the full request flow across all agents.
 ====
 
-== Exercise 2: 2 personas, one observability stack
+== Exercise 2: 2 personas, 1 observability stack
 
 At Fed Aura Capital, 2 primary teams need observability but focus on different things. Let's identify who owns what in the AgentOps observability stack.
 
-image::arch2.png[AgentOps Observability Stack showing SRE and AI Developer personas,link=self,window=blank,width=700]
+image::arch2.png[AgentOps Observability Stack showing SRE and AI Developer personas,link=self,width=700]
 
 The stack serves both personas:
 
-* **SRE / Platform Engineering**: system health, SLOs, capacity. Uses Red Hat OpenShift AI (RHOAI) Observability Stack, OpenShift Logging, and Grafana dashboards.
-* **AI Developer / Engineer**: model behavior, decision quality, agent performance. Uses MLflow Tracing, MLflow Evaluations, and Grafana dashboards.
+* **SRE / Platform Engineering**: system health, service-level objectives (SLOs), capacity. Uses Red Hat OpenShift AI (RHOAI) Observability Stack, OpenShift Logging, and Grafana dashboards.
+* **AI Developer / Engineer**: model behavior, decision quality, agent performance. Uses MLflow Tracing and Grafana dashboards.
 * **Grafana / Perses Dashboards**: shared by both personas for metrics and KPI visualization.
 
 For each scenario below, decide which persona is responsible. Click to reveal the answer:
@@ -205,7 +205,7 @@ For each scenario below, decide which persona is responsible. Click to reveal th
 +
 [%collapsible]
 ====
-*AI Developer/Engineer*: agent decision logic and evaluation tuning.
+*AI Developer/Engineer*: agent decision logic and tuning.
 ====
 
 Some issues require collaboration between both personas:

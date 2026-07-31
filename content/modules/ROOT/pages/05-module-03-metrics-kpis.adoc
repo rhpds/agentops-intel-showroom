@@ -50,11 +50,11 @@ Traditional applications need request rate, error rate, and latency. Agentic app
 |Are queries routing to the fast or capable model? Is the classifier working?
 |===
 
-image::agentic-app-pre4.png[Agentic Metrics - The 6 That Matter showing traditional metrics plus agentic additions with model routing and Prometheus scraping by OpenShift UWM,link=self,window=blank,width=700]
+image::agentic-app-pre4.png[Agentic Metrics - The 6 That Matter showing traditional metrics plus agentic additions with model routing and Prometheus scraping by OpenShift UWM,link=self,width=700]
 
 The mortgage-ai API exposes all these at `GET /metrics` in Prometheus format. **OpenShift User Workload Monitoring** (a built-in Prometheus instance that comes with Red Hat OpenShift AI) scrapes them automatically every 30 seconds and stores them in a time-series database.
 
-This means you don't need to set up Prometheus yourself—the platform handles collection and storage. You just need to:
+This means you don't need to set up Prometheus yourself. The platform handles collection and storage. You just need to:
 
 1. Expose metrics from your application (mortgage-ai already does this)
 2. Configure a visualization platform (we're using Grafana in this workshop) to query the OpenShift Prometheus data source (already configured)
@@ -117,7 +117,7 @@ Additionally, `prometheus-fastapi-instrumentator` provides automatic HTTP metric
 
 Navigate to the *Grafana* tab to access the dashboard.
 
-image::grafana-tab.png[]
+image::grafana-tab.png[Grafana tab in the workshop environment,link=self]
 
 If prompted, login again with your credentials:
 
@@ -132,17 +132,16 @@ The Grafana instance is pre-deployed in your workspace namespace with a **Mortga
 Let's open it and see what's there.
 
 . Open the *Grafana* tab.
-
 . Navigate to the **Mortgage-AI Backend Metrics** dashboard.
-
-image::open-grafana-sidebar.png[]
-image::open-metrics-dashboard.png[]
++
+image::open-grafana-sidebar.png[Grafana sidebar navigation menu,link=self]
+image::open-metrics-dashboard.png[Selecting Mortgage-AI Backend Metrics dashboard,link=self]
 
 === Overview and HTTP panels
 
 The top of the dashboard gives you an at-a-glance view of system health:
 
-image::grafana2.png[Grafana Overview and HTTP panels showing request rate and latency,link=self,window=blank,width=700]
+image::grafana2.png[Grafana Overview and HTTP panels showing request rate and latency,link=self,width=700]
 
 What you're seeing:
 
@@ -171,7 +170,7 @@ Below the overview, the HTTP panels break down traffic by endpoint and status co
 
 Scroll down to the **AI Agent Metrics** row. This is where it gets interesting. These metrics are unique to agentic applications:
 
-image::grafana1.png[Grafana AI Agent Metrics showing token usage and tool call success rate,link=self,window=blank,width=700]
+image::grafana1.png[Grafana AI Agent Metrics showing token usage and tool call success rate,link=self,width=700]
 
 The 4 stat panels at the top of this section show:
 
@@ -202,17 +201,17 @@ The traffic you generated in Module 1 (Explore Products, CEO portfolio health) i
 
 == Exercise 2: Explore application logs with LokiStack
 
-Metrics show aggregated health, but when something goes wrong you need the actual log events. Red Hat AI includes **LokiStack**, a high-performance log aggregation system that automatically collects everything your application writes to STDOUT or STDERR—no code changes needed. Let's explore the mortgage-ai logs.
+Metrics show aggregated health, but when something goes wrong you need the actual log events. Red Hat AI includes **LokiStack**, a high-performance log aggregation system that automatically collects everything your application writes to STDOUT or STDERR. No code changes are needed. Let's explore the mortgage-ai logs.
 
 === Navigate to the log viewer
 
 . Navigate to the *OCP Console* tab. Then navigate to **Observe** → **Logs**.
 +
-image::observe-logs.png[]
+image::observe-logs.png[OpenShift Console Observe Logs navigation,link=self]
 +
-You'll see a **Forbidden — Missing permissions to get logs** error:
+You'll see a **Forbidden -- Missing permissions to get logs** error:
 +
-image::logging4.png[OpenShift Console Observe Logs showing Forbidden error for regular user,link=self,window=blank,width=700]
+image::logging4.png[OpenShift Console Observe Logs showing Forbidden error for regular user,link=self,width=700]
 +
 This is expected. Because you're logged in as a regular user (`{user}`), OpenShift restricts log access to only your namespace for security. Cluster-wide log access is reserved for cluster administrators.
 
@@ -221,7 +220,7 @@ This is expected. Because you're logged in as a regular user (`{user}`), OpenShi
 [start=2]
 . Click **Show Query** to open the query editor:
 +
-image::logging5.png[OpenShift Console Logs Show Query button,link=self,window=blank,width=700]
+image::logging5.png[OpenShift Console Logs Show Query button,link=self,width=700]
 +
 Enter this LogQL query to scope the logs to your namespace:
 +
@@ -242,7 +241,7 @@ What you see is structured JSON. Each log entry contains:
 * **Application message**: The actual log event from your application (in the `message` field)
 * **Timestamps**: When the event occurred
 
-Scroll through a log entry to find the `message` field—that's where the useful application data lives. The metadata helps correlate logs across containers and filter by pod, namespace, or container.
+Scroll through a log entry to find the `message` field, which contains the useful application data. The metadata helps correlate logs across containers and filter by pod, namespace, or container.
 
 TIP: To quickly locate the `message` field in a log entry, use your browser's find feature: **Cmd+F** (Mac) or **Ctrl+F** (Windows/Linux), then search for `"message"`. This helps you skip past the Kubernetes metadata and jump straight to the application log content.
 
@@ -281,7 +280,7 @@ Analysis of mortgage-ai logs (last hour):
 • Most active agent: Prospect (27 requests)
 ----
 
-The raw data exists in LokiStack—AI makes it accessible without manual JSON parsing or complex queries.
+The raw data exists in LokiStack, and AI makes it accessible without manual JSON parsing or complex queries.
 
 === Logs and traces are complementary
 
@@ -299,7 +298,7 @@ Logs capture detailed events: errors, warnings, debug output, tool results. They
 
 Together, logs and traces give you complete visibility: logs for detailed events, traces for request flow.
 
-IMPORTANT: **LokiStack is a supported feature of Red Hat AI.** Logs persist beyond pod lifetime—when a container restarts or gets redeployed, LokiStack retains the historical logs, making post-incident investigation possible. For multi-agent systems, this persistent log storage is essential for correlating events across API, UI, and database containers.
+IMPORTANT: **LokiStack is a supported feature of Red Hat AI.** Logs persist beyond pod lifetime. When a container restarts or gets redeployed, LokiStack retains the historical logs, making post-incident investigation possible. For multi-agent systems, this persistent log storage is essential for correlating events across API, UI, and database containers.
 
 == Module summary
 
