@@ -10,7 +10,7 @@ This workshop runs on **Intel** hardware via the Red Hat Demo Platform. All LLM 
 |Component |Intel Hardware
 
 |**LLM Inference**
-|qwen3-14b on Intel infrastructure (rac-maas, 8 cards / 2 replicas)
+|qwen3-14b on Intel infrastructure (shared model-serving cluster, 8 cards / 2 replicas)
 
 |**Model Serving**
 |vLLM optimized for Intel, with hardware-accelerated graph compilation and expert parallelism
