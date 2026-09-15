@@ -19,7 +19,6 @@ Congratulations! You've completed the AgentOps Observability with Red Hat AI wor
 **Advanced topic (Module 5, if completed):**
 
 * Automated evaluations with AI Pipelines for continuous quality monitoring
-* Caught a prompt regression before production by comparing evaluation results across prompt versions
 
 You now have the practical skills to implement AgentOps observability at your organization.
 
@@ -35,7 +34,7 @@ The most important concepts to remember:
 
 . **Tracing is the cornerstone**: MLflow tracing provides the end-to-end visibility needed to understand multi-agent decision paths and diagnose distributed failures.
 
-. **Automated quality gates**: Observability tells you if systems work; automated evaluations tell you if they work *well*. Continuous evaluation prevents quality regression.
+. **Automated quality gates**: Observability tells you if systems work; automated evaluations tell you if they work *well*.
 
 == Fed Aura Capital's transformation
 
@@ -62,7 +61,7 @@ With the AgentOps observability stack you implemented, they now have:
 |Proactive alerting and monitoring
 
 |Unknown quality levels
-|Baseline metrics with regression detection
+|Baseline metrics from automated evaluations
 |===
 
 == Next steps
